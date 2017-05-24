@@ -1,0 +1,128 @@
+<!--@subject {{var store.getFrontendName()}}: 汇款通知（汇款号：#{{var payment.getId()}}）@-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Microsoft YaHei, Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+    <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Microsoft YaHei, Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+        <tr>
+            <td align="center" valign="top">
+                <!-- [ header starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr> <!--edit by Sally-->
+                        <td valign="top"><a href="{{store url=""}}"><img src="{{var logo_url}}"  alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+                    </tr> <!--end by Sally-->
+                </table>
+                <!-- [ middle starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <p>
+                                <strong>您好，{{htmlescape var=$payment.getAccountName()}}</strong>,<br/>
+                                {{if payment.isRequest()}}
+                                我们已确认您的提款要求。现在对您的汇款成功。为了确认您的提款状态，请登录推荐人页面<a href="{{store url='affiliateplus/index/payments'}}" style="color:#1E7EC8;">调查提款</a><br>
+                                如果您对您的余额有疑问，可联系您的客服进行咨询。（邮件：<a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a>，电话：400-8858-312，QQ：2286829607）
+                            </p>
+                            <p>您的提款状态：</p>
+
+                            <h3 style="border-bottom:2px solid #eee; font-size:1.05em; padding-bottom:1px; ">提款要求日：<small>{{var payment.getCreatedTimeFormated()}}</small></h3>
+                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <thead>
+                                    <tr>
+                                       <!-- <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">PayPal邮箱</th>
+                                        <th width="2%"></th>-->
+                                        <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">提款要求额</th>
+                                        <th width="2%"></th>
+                                        <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">提款要求日</th>
+                                        <th width="2%"></th>
+                                        <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">汇款额</th>
+                                        <th width="2%"></th>
+                                        <!--<th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">PayPal手续费</th>
+                                        <th width="2%"></th>-->
+                                        <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">现在余额</th>						
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                       <!-- <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                            {{var payment.getAccountPaypalEmail()}}
+                                        </td>	
+                                        <td>&nbsp;</td>-->
+                                        <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                            {{var payment.getRequestPayment()}}
+                                        </td>							
+                                        <td>&nbsp;</td>
+                                        <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                            {{var payment.getRequestDateFormated()}}
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                            {{var payment.getPayPayment()}}
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <!-- <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                             {{var payment.getFeeFormated()}}
+                                         </td>
+                                         <td>&nbsp;</td>-->
+                                         <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                             {{var payment.getBalanceFormated()}}
+                                         </td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+
+                             {{else}}
+                             您的推荐人余额到达提款设定额。所以我们会进行汇款过程。
+                             为了确认您的提款状态，请登录推荐人页面<a href="{{store url='affiliateplus/index/payments'}}" style="color:#1E7EC8;">调查提款</a><br>
+                             如果您对您的余额，可联系您的客服进行咨询。（邮件：<a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a>，电话：400-8858-312，QQ：2286829607）
+                             </p>
+                             <p>您的提款状态：</p>
+                             <h3 style="border-bottom:2px solid #eee; font-size:1.05em; padding-bottom:1px; ">提款日：<small>{{var payment.getCreatedTimeFormated()}}</small></h3>
+                             <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                 <thead>
+                                     <tr>
+                                         <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">支付方式</th>
+                                         <th width="2%"></th>
+                                         <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">汇款额</th>
+                                         <th width="2%"></th>
+                                         <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">手续费</th>
+                                         <th width="2%"></th>
+                                         <th align="left" width="15%" bgcolor="#d9e5ee" style="font-size:12px;padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">现在余额</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <tr>
+                                         <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                             {{var payment.getPaymentMethodHtml()}}
+                                         </td>
+                                         <td>&nbsp;</td>
+                                         <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                             {{var payment.getPayPayment()}}
+                                         </td>
+                                         <td>&nbsp;</td>
+                                         <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                             {{var payment.getFeeFormated()}}
+                                         </td>
+                                         <td>&nbsp;</td>
+                                         <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                             {{var payment.getBalanceFormated()}}
+                                         </td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+                             {{/if}}
+                             <br/>
+                             <p>谢谢您选择有你肯,<br/><strong>{{var sender_name}}</strong></p>
+                         </td>
+                     </tr>
+                 </table>
+             </td>
+         </tr>
+     </table>
+ </div>

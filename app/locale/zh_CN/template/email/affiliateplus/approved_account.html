@@ -1,0 +1,61 @@
+<!--@subject {{var store.getFrontendName()}}: Approved Affiliate account @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$referral.getReferralName()":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var referral.getEmail()":"Customer Email",
+"htmlescape var=$referral.getPassword()":"Customer Password"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+    <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+        <tr>
+            <td align="center" valign="top">
+                <!-- [ header starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top"> <!--edit by Sally-->
+                            <a href="{{store url=""}}"><img src="{{var logo_url}}"  alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+                    </tr> <!--end by Sally-->
+                </table>
+
+                <!-- [ middle starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <p><strong>您好， {{htmlescape var=$account.getName()}}</strong>,<br/>
+								感谢您参加有你肯“推荐有礼”活动。 我们会确认您的帐户信息，以进行审核。对您的审核结果，我们会尽快给您通知
+								为了登录您的帐户，请电击在我们网站上面的<a href="{{store url="affiliateplus/account/login"}}">登录</a> ，或者 <a href="{{store url="affiliateplus/index/"}}">我的有你肯</a>连接。
+                                </p>
+                            <br/>
+                            <p style="border:1px solid #BEBCB7; padding:13px 18px; background:#F8F7F5; ">
+                                请确认以下您的帐户信息:<br/>
+                                帐户名 : {{htmlescape var=$account.getName()}}<br/>
+                                邮件地址: {{var account.getEmail()}}<br/>
+                                密码: {{var account.getPassword()}}
+                            </p>
+                            <br/>
+                            <p>Your account information is below. Thank you for choosing to work with {{var store.getFrontendName()}}.</p>
+                            <br/>
+                            <p style="border:1px solid #BEBCB7; padding:13px 18px; background:#F8F7F5; ">
+                                Account Name: {{var account.getName()}}<br/>
+                                PayPal Email: {{var account.getPaypalEmail()}}
+                            </p>
+                            <br/>
+                            <p>
+                                如果您对“推荐有礼”活动有任何的疑问，可以联系我们的客服进行咨询。（邮件：<a href="mailto:{{config path='trans_email/ident_support/email'}}">{{config path='trans_email/ident_support/email'}}</a>电话 ：400-8858-312 QQ： 2286829607） 
+                            </p>
+                            <br/>
+                            <p>谢谢您选择有你肯,<br/><strong>{{var sender_name}}</strong></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

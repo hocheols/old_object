@@ -28,10 +28,10 @@
 <config>
     <global>
         <install>
-            <date><![CDATA[Tue, 23 May 2017 12:19:24 +0000]]></date>
+            <date><![CDATA[Wed, 24 May 2017 11:21:34 +0000]]></date>
         </install>
         <crypt>
-            <key><![CDATA[ditto]]></key>
+            <key><![CDATA[0aba97eff486b299fb51125eac09e184]]></key>
         </crypt>
         <disable_local_modules>false</disable_local_modules>
         <resources>

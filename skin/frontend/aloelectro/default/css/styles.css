@@ -2070,8 +2070,8 @@ transition: all 0.3s;
 .footer-item .box-content .content .link-list{display: table-cell; vertical-align: top}
 .footer-item:nth-child(2) .box-content .content .link-list:nth-child(2){padding-left: 75px}
 .footer-item .box-content{position: relative;}
-.footer-item .box-content .content .link-list a{font-size: 14px; color: #333e48; font-weight: normal; text-transform: capitalize; display: block; line-height: 20px}
-.footer-item .box-content .content .link-list a{transition: all 0.3s; padding-bottom: 15px}
+.footer-item .box-content .content .link-list a{font-size: 13px; color: #333e48; font-weight: normal; text-transform: capitalize; display: block; line-height: 14px}
+.footer-item .box-content .content .link-list a{transition: all 0.3s; padding-bottom: 11px}
 .footer-item .box-content .content .info .question{font-size: 13px; color: #333e48; font-weight: 300; line-height: 20px; display: inline-block;}
 .footer-item .box-content .content .info .hot-number{font-size: 22px; color: #333e48; font-weight: 600; display: inline-block; line-height: 30px}
 .footer-item .box-content .content .link-list a:hover{color: #fed700;}

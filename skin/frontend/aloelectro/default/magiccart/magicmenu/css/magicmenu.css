@@ -726,7 +726,7 @@
     display: block;
     position: relative;
     padding: 0px;
-    z-index: 1;
+    z-index: 999;
     width: 23%;
     float: left;
 }

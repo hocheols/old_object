@@ -1,0 +1,6 @@
+
+-----------------------------------------------------------------
+MAIN MENU UPDATE:
+-----------------------------------------------------------------
+ + admin panel -> catalog -> manage categories -> magiccart -> cat image
+ + upload category images

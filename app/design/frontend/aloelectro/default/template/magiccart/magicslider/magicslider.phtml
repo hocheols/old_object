@@ -51,7 +51,7 @@ $idHtml = $this->generateRandomString();
 <style>
 	.btn-img {
     width: 25px;
-    height: 35px;
+    height: 45px;
     display: inline-block;
     background-repeat: no-repeat;    
     background-position: center;
@@ -63,19 +63,23 @@ $idHtml = $this->generateRandomString();
     background-image: url(skin/frontend/aloelectro/default/images/images/right_arrow.png);
     background-size: 100% 100%;
 	position: absolute;
-	top: 45%;
+	top: 40%;
 }
 
 .img-left-arrow {
     background-image: url(skin/frontend/aloelectro/default/images/images/left_arrow.png);
     background-size: 100% 100%;
 	position: absolute;
-	top: 45%;
+	top: 40%;
 	left: 30%;
 }
 
 .carousel-control.right, .carousel-control.left{
 	background-image: none;
+}
+
+.carousel-indicators{
+	z-index: 1;
 }
 
 .carousel-indicators li{
@@ -89,6 +93,31 @@ $idHtml = $this->generateRandomString();
 
 .carousel-inner .item img{
 	height: 300px;
+}
+
+.shop-now{
+	position: absolute;
+    top: 75%;
+    left: 25.5%;
+    padding: 4px 25px;
+    color: white;
+    background-color: #FF2A00;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.shop-now.white{
+	color: black;
+    background-color: #fff;
+}
+
+.shop-now:hover{
+	color: white;
+}
+
+.shop-now.white:hover{
+	color: black;
 }
 
 @media screen and (min-width: 768px){
@@ -115,30 +144,37 @@ $idHtml = $this->generateRandomString();
     <div class="carousel-inner">
       <div class="item active">
         <img src="skin/frontend/aloelectro/default/images/images/slides/slide1.png" alt="slide1" style="width:100%;">
+		<a class="shop-now" href = "#">SHOP NOW</a>
       </div>
       <div class="item">
         <img src="skin/frontend/aloelectro/default/images/images/slides/slide2.png" alt="slide2" style="width:100%;">
-      </div>
+		<a class="shop-now" href = "#">SHOP NOW</a>
+	  </div>
     
       <div class="item">
         <img src="skin/frontend/aloelectro/default/images/images/slides/slide3.png" alt="slide3" style="width:100%;">
-      </div>
+		<a class="shop-now" href = "#">SHOP NOW</a>
+	  </div>
 
 	  <div class="item">
         <img src="skin/frontend/aloelectro/default/images/images/slides/slide4.png" alt="slide4" style="width:100%;">
-      </div>
+		<a class="shop-now" href = "#">SHOP NOW</a>
+	  </div>
 
 	  <div class="item">
         <img src="skin/frontend/aloelectro/default/images/images/slides/slide5.png" alt="slide5" style="width:100%;">
-      </div>
+		<a class="shop-now" href = "#">SHOP NOW</a>
+	  </div>
 
 	  <div class="item">
         <img src="skin/frontend/aloelectro/default/images/images/slides/slide6.png" alt="slide6" style="width:100%;">
-      </div>
+		<a class="shop-now white" href = "#">SHOP NOW</a>
+	  </div>
 
 	  <div class="item">
         <img src="skin/frontend/aloelectro/default/images/images/slides/slide7.png" alt="slide7" style="width:100%;">
-      </div>
+		<a class="shop-now" href = "#">SHOP NOW</a>
+	  </div>
     </div>
 
     <!-- Left and right controls -->

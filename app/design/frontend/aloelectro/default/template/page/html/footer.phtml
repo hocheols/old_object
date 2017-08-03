@@ -25,14 +25,145 @@
  */
 ?>
 <div class="footer-container footer-color color">
-    <?php echo $this->getChildHtml('block_footer_top') ?>
-	<?php echo $this->getChildHtml('cms-static-main-footer') ?>
+	<div style="margin-top: 30px;"></div>
+    <!-- <?php echo $this->getChildHtml('block_footer_top') ?> -->
+	<!-- <?php echo $this->getChildHtml('cms-static-main-footer') ?> -->
+	<?php $host=Mage::getBaseUrl (Mage_Core_Model_Store::URL_TYPE_WEB);?>
+	
+	<div class="main-footer">
+	<div class="container">
+		<div class="row">
+			<div class="cms-static-main-footer">
+				<div class="footer-item col-lg-3 col-md-3 col-sm-12 col-xs-12 col-mobile-12" style="text-align:center;margin-top:55px;">
+					<div class="box-content collapsible mobile-collapsible">
+					<h3 class="title"><a href="#"><img src="<?php echo $host?>skin/frontend/aloelectro/default/images/logo.png" alt="" width=200 height=100/></a></h3>
+					<span class="toggle-tab mobile"><em class="hidden">hidden</em></span>
+					<div class="toggle-content" style="font-size:2em;">
+					<ul>
+						<li>
+						<div class="link-social">
+						<ul class="link-list">
+						<li class="link-icon"><a class="fa fa-facebook" title="facebook" href="#" style="font-size: 25px; color: #7c7c7c; padding: 20px 10px; line-height: 30px;"><span class="hidden">hidden</span></a></li>
+						<li class="link-icon"><a class="fa fa-twitter" title="twitter" href="#" style="font-size: 25px; color: #7c7c7c; padding: 20px 10px; line-height: 30px;"><span class="hidden">hidden</span></a></li>
+						<li class="link-icon"><a class="fa fa-linkedin" title="linkedin" href="#" style="font-size: 25px; color: #7c7c7c; padding: 20px 10px; line-height: 30px;"><span class="hidden">hidden</span></a></li>
+						<li class="link-icon"><a class="fa fa-rss" title="rss" href="#" style="font-size: 25px; color: #7c7c7c; padding: 20px 10px; line-height: 30px;"><span class="hidden">hidden</span></a></li>
+						</ul>
+						</div>
+						</li>
+					</ul>
+					</div>
+					</div>
+				</div>
+				<div class="footer-item col-lg-5 col-md-5 col-sm-6 col-xs-12 col-mobile-12">
+					<div class="row" style="margin-top:20px;">
+						<div class="footer-item col-lg-1 col-md-2 col-sm-2 col-xs-2 col-mobile-2">
+							<img src="<?php echo $host?>skin/frontend/aloelectro/default/images/worldwidedelivery.png">
+						</div>	
+						<div class="footer-item col-lg-11 col-md-10 col-sm-10 col-xs-10 col-mobile-10" style="padding-left:20px;">
+				                <h3 class="title" style="line-height:0px;">Worldwide Delivery</h3></br>
+						<p style="font-size:14px;margin: 0 0 0 0; ">Shipped in various countries and regions.<p>
+						</div>
+					</div>
+                    <hr style=" border-top: 2px solid #8c8b8b;margin-right:50px"/>
+					<div class="row">
+						<div class="footer-item col-lg-1 col-md-2 col-sm-2 col-xs-2 col-mobile-2">
+							<img src="<?php echo $host?>skin/frontend/aloelectro/default/images/securepayment.png">
+						</div>	
+						<div class="footer-item col-lg-11 col-md-10 col-sm-10 col-xs-10 col-mobile-10"  style="padding-left:20px;">
+				        <h3 class="title" style="line-height:0px;">Secure Payment</h3></br>
+                        <p style="font-size:14px;margin: 0 0 0 0;">We support transactions of sale payment method.</p>
+
+						</div>
+					</div>
+					<hr  style="border-top: 2px solid #8c8b8b;margin-right:50px;"/>
+					<div class="row">
+						<div class="footer-item col-lg-1 col-md-2 col-sm-2 col-xs-2 col-mobile-2">
+							<img src="<?php echo $host?>skin/frontend/aloelectro/default/images/trustshop.png" style="margin-left:5px;">
+						</div>	
+						<div class="footer-item col-lg-11 col-md-10 col-sm-10 col-xs-10 col-mobile-10"  style="padding-left:20px;">
+				                <h3 class="title" style="line-height:0px;">Trust Shop</h3></br>
+                            	<p style="font-size:14px;margin: 0 0 0 0;">Shopport shoppers of trust though buyer protection.</p>
+
+						</div>
+					</div>
+					<hr  style="border-top: 2px solid #8c8b8b;margin-right:50px;"/>
+					<div class="row">
+						<div class="footer-item col-lg-1 col-md-2 col-sm-2 col-xs-2 col-mobile-2" s>
+							<img src="<?php echo $host?>skin/frontend/aloelectro/default/images/24hourhelpcenter.png">
+						</div>	
+						<div class="footer-item col-lg-11 col-md-10 col-sm-10 col-xs-10 col-mobile-10"  style="padding-left:20px;">
+							<h3 class="title" style="line-height:0px;">24 Hour Help Center</h3></br>
+                             <p style="font-size:14px;margin: 0 0 0px;">We provide 24 hour customer support. </p>
+						</div>
+					</div>
+				</div>
+				<div class="footer-item col-lg-2 col-md-2 col-sm-3 col-xs-6 col-mobile-6">
+					<div class="row" >
+						<div class="box-content collapsible mobile-collapsible">
+							<h3 class="title">How to buy</h3>
+							<span class="toggle-tab mobile"><em class="hidden">hidden</em></span>
+							<div class="content toggle-content" style="font-size:14px;">
+								<ul class="link-list">
+									<li><a href="#">How to buy</a></li>
+									<li><a href="#">Making Payments</a></li>
+									<li><a href="#">Delivery Options</a></li>
+									<li><a href="#">Buyer Protection</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                    <div class="row" style="height:30px;"></div>
+					<div class="row">
+						<div class="box-content collapsible mobile-collapsible">
+							<h3 class="title">Company Info</h3>
+							<span class="toggle-tab mobile"><em class="hidden">hidden</em></span>
+							<div class="content toggle-content" style="font-size:14px;">
+								<ul class="link-list">
+									<li><a href="#">About us</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-item col-lg-2 col-md-2 col-sm-3 col-xs-6 col-mobile-6">
+					<div class="row" >
+						<div class="box-content collapsible mobile-collapsible">
+							<h3 class="title">Help</h3>
+							<span class="toggle-tab mobile"><em class="hidden">hidden</em></span>
+							<div class="content toggle-content" style="font-size:14px;">
+								<ul class="link-list">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">My Orders</a></li>
+									<li><a href="#">FAQ</a></li>
+									<li><a href="#">Contact us</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                    <div class="row" style="height:30px;"></div>
+					<div class="row">
+						<div class="box-content collapsible mobile-collapsible">
+							<h3 class="title">Partner Promotion</h3>
+							<span class="toggle-tab mobile"><em class="hidden">hidden</em></span>
+							<div class="content toggle-content" style="font-size:14px;">
+								<ul class="link-list">
+									<li><a href="#">Partnerships</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
     <div class="block-footer-copyright footer-links-company">
         <div class="container">
             <div class="footer">
 			    <div class="main">
                     <address><?php echo $this->getCopyright() ?></address>
-                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('paypal')->toHtml(); ?>
+                    <img src="<?php echo $host?>skin/frontend/aloelectro/default/images/paypal.png" class="img-responsive paypal";" />
+                    <!-- <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('paypal')->toHtml(); ?> -->
 				</div>
             </div>
         </div>

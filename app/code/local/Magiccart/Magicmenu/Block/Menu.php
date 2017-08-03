@@ -302,7 +302,6 @@ class Magiccart_Magicmenu_Block_Menu extends Mage_Catalog_Block_Navigation
 
     public function  getTreeCategoriesExt($parentId,$desktopBgImg='') // include Magic_Label
     { 
-		
         $categories = Mage::getModel('magicmenu/category')->getCollection()
                         ->addAttributeToSelect(array('name','magic_label','url_path'))
                         ->addAttributeToFilter('include_in_menu', 1)
@@ -317,7 +316,14 @@ class Magiccart_Magicmenu_Block_Menu extends Mage_Catalog_Block_Navigation
             $childClass = $childHtml ? ' hasChild' : '';
             $html .= '<li class="level' .($level -2) .$childClass. '"><a href="' . $category->getUrl(). '"><span>' .$category->getName() . $this->getCatLabel($category) . "</span></a>\n" . $childHtml . '</li>';
         }
+
+        /***** original *****
         if($html) $html = '<ul class="level'.($level -3).'" style="background:#fff;width:500px;"><div style="width:500px;background:url(\''.$desktopBgImg.'\') no-repeat">' .$html. '</div></ul>';
+        return $html;*/
+
+        /****** Change by tritq *****/
+        $new_div_for_img = '<div style="background:url(\''.$desktopBgImg.'\') no-repeat left top/auto"' ." class='img-in-mainmenu'></div>";
+        if($html) $html = '<ul class="level'.($level -3).'" style="background:#fff;"><div  class="container-img-in-mainmenu">' .$new_div_for_img . $html. '</div></ul>';
         return $html;
     }
 

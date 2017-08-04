@@ -1,0 +1,246 @@
+<?php
+/**
+ * Magiccart 
+ * @category 	Magiccart 
+ * @copyright 	Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license 	http://www.magiccart.net/license-agreement.html
+ * @Author: Magiccart<team.magiccart@gmail.com>
+ * @@Create Date: 2014-05-08 22:57:12
+ * @@Modify Date: 2016-03-04 16:59:54
+ * @@Function:
+ */
+ ?>
+ 
+ <style>
+ 	.category-group {
+		 border-top: 1px solid #F1F1F1;
+		 border-bottom: 1px solid #F1F1F1;
+		 padding: 10px 0;
+		 margin-bottom: 30px;
+		 display:inline-block;
+		 overflow: hidden;    
+		 width: 100%;
+	 }
+	 
+	 .category-group .category-section {
+		 padding-left: 0;
+	 }
+	 
+	 .category-group .category-section ul {
+		 padding-right: 15px;
+		 list-style: none;
+		 margin: 0;
+		 text-align: center;
+		 height:235px;
+		 overflow: auto;
+	 }
+	 
+	 .category-group .category-section ul::-webkit-scrollbar {
+		display: none;
+	 }
+	 
+	 .category-group h3 {
+		 padding: 0 15px 10px 15px;
+		 border-bottom: 1px solid #F1F1F1;
+		 color:black;
+		 font-size: 1.3em;
+		 text-transform: uppercase;
+	 }
+	 
+	 .category-group .image-section {
+		 padding:0;
+	 }
+	 
+	  .category-group .image-section .img-block {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+    	overflow: hidden;
+	 }
+	 
+	 .category-group .image-section .box-overlay{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(0,0,0,0.1);
+	 }
+	 
+	 .category-group .image-section .text-overlay{
+		position: absolute;
+		bottom: 30px;
+		left: 30px;
+		color: white;
+	 }
+	 .category-group .image-section .img-1 {
+		 width: 30%;
+		 padding-right: 5px;
+		 padding-left: 0;
+		 height: 330px;
+    	 overflow: hidden;
+	 }
+	 
+	 .category-group .image-section .img-2 {
+		 width: 70%;
+		 padding: 0 5px 5px 5px;
+		 height: 165px;
+    	overflow: hidden;
+	 }
+	 
+	 .category-group .image-section .img-3 {
+		 width: 30%;
+		 padding: 0 0 5px 5px;
+		 height: 165px;
+    	overflow: hidden;
+	 }
+	 
+	 .category-group .image-section .img-4, .category-group .image-section .img-5 {
+		 width: 35%;
+		 padding: 5px 5px 0 5px;
+		 height: 165px;
+    	overflow: hidden;
+	 }
+	 
+	 .category-group .image-section .img-6 {
+		 width: 30%;
+		 padding: 5px 0 0 5px;
+		 height: 165px;
+    	overflow: hidden;	
+	 }
+	 
+	 .image-section img{
+		 height: 100%;
+	 }
+	 
+	 .scroll-category {
+		 text-align: center;
+		 color: black;
+	 }
+	 
+	 .scroll-category .disabled {
+		 color: lightgrey;
+	 }
+	 
+ </style>
+ 
+ <?php
+ 	// $categories = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addIsActiveFilter();
+	$categories = Mage::helper('catalog/category')->getStoreCategories();
+ ?>
+<div class="container"> 
+ <?php foreach($categories as $cat): ?>
+	<div class="category-group">
+		<div class="col-sm-2 category-section">
+			<h3>
+				<?php echo $cat->getName(); ?>
+				<a href="<?php echo $cat->getUrlKey(); ?>" class="fa fa-chevron-right pull-right"></a>
+			</h3>
+			<?php $subCats =  Mage::getModel('catalog/category')->getCategories($cat->getId());
+				$limitedSubCats =  Mage::getModel('catalog/category')->getCollection()->addFieldToFilter("parent_id", $cat->getId())->setPage(1, 4);
+			?>
+			<div class="scroll-category"><span class="fa fa-chevron-up <?php count($subCats) < 13 ? 'disabled' : '' ?>"></span></div>
+			<ul>
+				<?php foreach($subCats as $subCat): ?>
+					<li><a href="<?php echo $subCat->getUrlKey(); ?>"><?php echo $subCat->getName(); ?></a></li>
+				 <?php endforeach; ?>
+			</ul>    
+			<div class="scroll-category"><span class="fa fa-chevron-down disabled"></span></div>
+		</div>
+		<div class="col-sm-10 image-section">
+			<div class="row">
+				<div class="col-sm-4 img-1">
+					<a class="img-block">
+						<span class="box-overlay"></span>
+						<span class="text-overlay"></span>
+						<img src="/media/catalog/product/cache/1/small_image/250x232/9df78eab33525d08d6e5fb8d27136e95/images/catalog/product/placeholder/small_image.jpg"/>
+					</a>
+				</div>
+				<div class="col-sm-8">
+					<div class="row">
+						<div class="col-sm-10 img-2">
+							<a class="img-block">
+								<span class="box-overlay"></span>
+								<span class="text-overlay"></span>
+								<img src="/media/catalog/product/cache/1/small_image/250x232/9df78eab33525d08d6e5fb8d27136e95/images/catalog/product/placeholder/small_image.jpg"/>
+							</a>
+						</div>
+						<?php $index = 0; ?>
+						<?php foreach($subCats as $subCat): ?>
+						 	<?php 
+							 $image = $subCat->getMagicImage();
+														 
+							 if ($index > 3){continue;}
+							 elseif ($index == 0){
+								 if(!$image){
+								 	$image = '/media/catalog/product/img_3.jpg';
+							 	}
+								 echo '<div class="col-sm-2 img-3">';
+							 }
+							  elseif ($index == 1){
+								 if(!$image){
+								 	$image = '/media/catalog/product/img_4.jpg';
+							 	}
+								 echo '<div class="col-sm-5 img-4">';
+							 }
+							  elseif ($index == 2){
+								 if(!$image){
+								 	$image = '/media/catalog/product/img_5.jpg';
+							 	}
+								 echo '<div class="col-sm-5 img-5">';
+							 }
+							  elseif ($index == 3){
+								 if(!$image){
+								 	$image = '/media/catalog/product/img_6.jpg';
+							 	}
+								 echo '<div class="col-sm-2 img-6">';
+							 }
+							 ?>
+								<a class="img-block" href="<?php echo  $subCat->getUrlKey(); ?>">
+									<span class="box-overlay"></span>
+									<span class="text-overlay"><?php echo  $subCat->getName(); ?></span>
+									<img src="<?php echo  $image ?>"/>
+								</a>
+							</div>
+							<?php $index += 1; ?>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ <?php endforeach; ?>
+ </div>
+
+<script type="text/javascript">
+jQuery(document).ready(function ($) {
+	$('.scroll-category').click(function(){
+		var parent = $(this).parent();
+		var ul = $(this).parent().find('ul');
+		var $ul = $(ul);
+		var top = $ul.scrollTop();
+		var is_at_top = top < 20;
+		var is_at_bottom = $ul.prop('scrollHeight') - top == $ul.outerHeight();
+		if(is_at_top){
+			parent.find('.fa-chevron-up').removeClass('disabled');
+			parent.find('.fa-chevron-down').addClass('disabled');
+		}
+		if(is_at_bottom){
+			parent.find('.fa-chevron-up').addClass('disabled');
+			parent.find('.fa-chevron-down').removeClass('disabled');
+		}
+		
+		//if($(this).find('.disabled').length == 0){
+			if($(this).find('.fa-chevron-up').length > 0){
+				$(ul).animate({scrollTop: top + 20}, 100);
+			}
+			else {
+				console.log(top);
+				$(ul).animate({scrollTop: top - 20}, 100);
+			}
+		//}
+	});
+});
+</script>
+

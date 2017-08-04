@@ -4,3 +4,13 @@ MAIN MENU UPDATE:
 -----------------------------------------------------------------
  + admin panel -> catalog -> manage categories -> magiccart -> cat image
  + upload category images
+
+
+-----------------------------------------------------------------
+ADD CATEGORY LIST ON HOMEPAGE:
+-----------------------------------------------------------------
+ + admin panel -> CMS -> PAGES -> edit 'DITTO Shopping3' -> content -> insert below line under slider
+
+{{widget type="magiccategory/widget_magiccategory" identifier="category-custom" template="magiccart/magiccategory/customcategory.phtml"}}
+
+ + upload category images at media\catalog\product

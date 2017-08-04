@@ -37,8 +37,9 @@ class Magiccart_Magicmenu_Helper_Image extends Mage_Core_Helper_Abstract
             //if image has already resized then just return URL
             if (file_exists($imagePath) && is_file($imagePath) && !file_exists($newPath)) {
                 $imageObj = new Varien_Image($imagePath);
+                /* keep ratio for cat image */
                 $imageObj->constrainOnly(TRUE);
-                $imageObj->keepAspectRatio(FALSE);
+                $imageObj->keepAspectRatio(TRUE);
                 $imageObj->keepTransparency(true);
                 $imageObj->keepFrame(FALSE);
                 $imageObj->quality(100);

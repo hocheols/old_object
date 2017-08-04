@@ -47,7 +47,9 @@ $idHtml = $this->generateRandomString();
 
 	<?php endif;?>
 <?php endforeach;?>-->
-
+<link rel="stylesheet" type="text/css" href="/skin/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="/skin/slick/slick-theme.css"/>
+<script type="text/javascript" src="/skin/slick/slick.min.js"></script>
 <style>
 	.btn-img {
     width: 25px;
@@ -168,23 +170,45 @@ $idHtml = $this->generateRandomString();
 	border-radius: 0;
 }
 
-.tcb-product-item .tcb-product-photo img{
-	display: inline-block;
-	overflow: hidden;
-	border-radius: 50%;
-	border: 1px solid #dedede;
-	height: 9.15vw;
-}
-
-.tcb-product-item .product-name-1{
-	color: black;
-	font-weight: bold;
-	font-size: 12px;
-}
 @media screen and (min-width: 768px){
 	.carousel-indicators {
 		bottom: 0px;
 	}
+}
+
+.custom-product-carousel .carousel-control     		 { width:  4%; }
+.custom-product-carousel .carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
+@media (max-width: 767px) {
+	.custom-product-carousel.carousel-inner .active.left { left: -100%; }
+	.custom-product-carousel.carousel-inner .next        { left:  100%; }
+	.custom-product-carousel .carousel-inner .prev		 { left: -100%; }
+	.custom-product-carousel.active > div { display:none; }
+	.custom-product-carousel .active > div:first-child { display:block; }
+
+}
+@media (min-width: 767px) and (max-width: 992px ) {
+	.custom-product-carousel .carousel-inner .active.left { left: -50%; }
+	.custom-product-carousel.carousel-inner .next        { left:  50%; }
+	.custom-product-carousel .carousel-inner .prev		 { left: -50%; }
+	.custom-product-carousel .active > div { display:none; }
+	.custom-product-carousel .active > div:first-child { display:block; }
+	.custom-product-carousel .active > div:first-child + div { display:block; }
+}
+@media (min-width: 992px ) {
+	.custom-product-carousel .carousel-inner .active.left { left: -16.7%; }
+	.custom-product-carousel .carousel-inner .next        { left:  16.7%; }
+	.custom-product-carousel .carousel-inner .prev		 { left: -16.7%; }	
+}
+
+.carousel-inner .img-product.img-circle{
+	border: 1px solid #dedede;
+	height: 9vw;
+}
+
+.carousel-inner .product-name{
+	font-size: 12px;
+    font-weight: bold;
+    color: black;
 }
 </style>
 
@@ -258,26 +282,94 @@ $idHtml = $this->generateRandomString();
   </div>
 	<?php
 			$storeId = Mage::app()->getStore()->getId();
-			$products = Mage::getResourceModel('reports/product_collection')
+			$products_best = Mage::getResourceModel('reports/product_collection')
 			->addOrderedQty()
 			->addAttributeToSelect('id')
 			->addAttributeToSelect(array('name', 'price', 'small_image'))
 			->setStoreId($storeId)
 			->addStoreFilter($storeId)
 			->setOrder('ordered_qty', 'desc');
+
+			 $products_hot = Mage::getResourceModel('reports/product_collection')
+			->addStoreFilter($store_id)
+			->addAttributeToFilter('visibility', 4)
+			->addAttributeToFilter('status', 1)  
+			->addAttributeToSelect('*')
+			->setVisibility(array(2,3,4))                          
+			->setOrder('created_at', 'desc');
+
 			$_helper = $this->helper('catalog/output');
 			$helpLabels = $this->helper('alothemes/labels');
 	?>
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-      <h3>HOT</h3>
-    </div>
+		<div class="col-md-10 col-md-offset-1">
+		<div class="carousel slide custom-product-carousel" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel1">
+		<div class="carousel-inner">
+			<?php $i=0; foreach ($products_hot as $_product): ?>
+			<div class="item <?php if($i == 0) echo 'active'?>">
+			<div class="col-md-2 col-sm-6 col-xs-12">
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+					<img class="img-responsive img-circle img-product" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($width , $height); ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+				</a>
+				<div class="text-center product-name">
+					<?php  echo $_product->getName() ?>
+				</div>
+			</div>
+			</div>
+			<?php $i++;?>
+			<?php endforeach ?>
+		</div>
+		<a class="left carousel-control" style="margin-left:-5%" href="#myCarousel1" data-slide="prev"><i class="btn-img img-left-arrow img-small"></i></a>
+		<a class="right carousel-control" style="margin-right:-4%" href="#myCarousel1" data-slide="next"><i class="btn-img img-right-arrow img-small"></i></a>
+		</div>
+		</div>
+	</div>
     <div id="menu1" class="tab-pane fade">
-			
+		<div class="col-md-10 col-md-offset-1">
+		<div class="carousel slide custom-product-carousel" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel2">
+		<div class="carousel-inner">
+			<?php $i=0; foreach ($products_best as $_product): ?>
+			<div class="item <?php if($i == 0) echo 'active'?>">
+			<div class="col-md-2 col-sm-6 col-xs-12">
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+					<img class="img-responsive img-circle img-product" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($width , $height); ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+				</a>
+				<div class="text-center product-name">
+					<?php  echo $_product->getName() ?>
+				</div>
+			</div>
+			</div>
+			<?php $i++;?>
+			<?php endforeach ?>
+		</div>
+		<a class="left carousel-control" style="margin-left:-5%" href="#myCarousel2" data-slide="prev"><i class="btn-img img-left-arrow img-small"></i></a>
+		<a class="right carousel-control" style="margin-right:-4%" href="#myCarousel2" data-slide="next"><i class="btn-img img-right-arrow img-small"></i></a>
+		</div>
+		</div>
     </div>
     <div id="menu2" class="tab-pane fade">
-      <h3>TREND</h3>
-      
+      <div class="col-md-10 col-md-offset-1">
+		<div class="carousel slide custom-product-carousel" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel3">
+		<div class="carousel-inner">
+			<?php $i=0; foreach ($products_best as $_product): ?>
+			<div class="item <?php if($i == 0) echo 'active'?>">
+			<div class="col-md-2 col-sm-6 col-xs-12">
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+					<img class="img-responsive img-circle img-product" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($width , $height); ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+				</a>
+				<div class="text-center product-name">
+					<?php  echo $_product->getName() ?>
+				</div>
+			</div>
+			</div>
+			<?php $i++;?>
+			<?php endforeach ?>
+		</div>
+		<a class="left carousel-control" style="margin-left:-5%" href="#myCarousel3" data-slide="prev"><i class="btn-img img-left-arrow img-small"></i></a>
+		<a class="right carousel-control" style="margin-right:-4%" href="#myCarousel3" data-slide="next"><i class="btn-img img-right-arrow img-small"></i></a>
+		</div>
+		</div>
     </div>
   </div>
 </div>
@@ -292,6 +384,23 @@ $idHtml = $this->generateRandomString();
 				el.siblings().find('.bx-caption').removeClass('play');
 				el.find('.bx-caption').addClass('play').addClass('start');				
 			},
+		});
+
+		$('.carousel[data-type="multi"] .item').each(function(){
+			var next = $(this).next();
+			if (!next.length) {
+				next = $(this).siblings(':first');
+			}
+			next.children(':first-child').clone().appendTo($(this));
+			
+			for (var i=0;i<4;i++) {
+				next=next.next();
+				if (!next.length) {
+					next = $(this).siblings(':first');
+				}
+				
+				next.children(':first-child').clone().appendTo($(this));
+			}
 		});
 	});
 </script>

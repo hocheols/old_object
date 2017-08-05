@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_log_index>
+        <reference name="content">
+            <block type="smscountry/adminhtml_log" name="log" />
+        </reference>
+    </adminhtml_log_index>
+</layout>

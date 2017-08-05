@@ -14,7 +14,9 @@ magmi
 productm
 productm_client
 /media/*
+media/*
 var/*
+/var/*
 app/etc/modules/Enterprise_*
 app/etc/modules/Mage_*
 app/etc/config.xml

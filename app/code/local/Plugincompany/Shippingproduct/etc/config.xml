@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<config>
+<!--
+ * Created by:  Milan Simek
+ * Company:     Plugin Company
+ *
+ * LICENSE: http://plugin.company/docs/magento-extensions/magento-extension-license-agreement
+ *
+ * YOU WILL ALSO FIND A PDF COPY OF THE LICENSE IN THE DOWNLOADED ZIP FILE
+ *
+ * FOR QUESTIONS AND SUPPORT
+ * PLEASE DON'T HESITATE TO CONTACT US AT:
+ *
+ * SUPPORT@PLUGIN.COMPANY
+-->
+    <modules>
+        <Plugincompany_Shippingproduct>
+            <version>1.2.5</version>
+        </Plugincompany_Shippingproduct>
+    </modules>
+    <global>
+        <helpers>
+            <plugincompany_shippingproduct>
+                <class>Plugincompany_Shippingproduct_Helper</class>
+            </plugincompany_shippingproduct>
+        </helpers>
+        <models>
+            <plugincompany_shippingproduct>
+                <class>Plugincompany_Shippingproduct_Model</class>
+                <resourceModel>plugincompany_shippingproduct_resource</resourceModel>
+            </plugincompany_shippingproduct>
+            <plugincompany_shippingproduct_resource>
+                <class>Plugincompany_Shippingproduct_Model_Resource</class>
+                <entities>
+                    <preset>
+                        <table>plugincompany_shipping_preset</table>
+                    </preset>
+                </entities>
+            </plugincompany_shippingproduct_resource>
+        </models>
+        <blocks>
+            <plugincompany_shippingproduct>
+                <class>Plugincompany_Shippingproduct_Block</class>
+            </plugincompany_shippingproduct>
+        </blocks>
+        <resources>
+            <shippingproduct_setup>
+                <setup>
+                    <module>Plugincompany_Shippingproduct</module>
+                    <class>Plugincompany_Shippingproduct_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </shippingproduct_setup>
+
+            <shippingproduct_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </shippingproduct_write>
+            <shippingproduct_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </shippingproduct_read>
+        </resources>
+    </global>
+    <adminhtml>
+        <menu>
+            <catalog>
+                <children>
+                    <groupswitch module="plugincompany_shippingproduct">
+                        <title>Product Shipping Rate Presets</title>
+                        <sort_order>10000</sort_order>
+                        <action>adminhtml/pcshippingpreset_index/index</action>
+                    </groupswitch>
+                </children>
+            </catalog>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <catalog>
+                            <children>
+                                <groupswitch translate="title" module="plugincompany_shippingproduct">
+                                    <title>Product Shipping Rate Presets</title>
+                                    <sort_order>1000</sort_order>
+                                </groupswitch>
+                            </children>
+                        </catalog>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <plugincompany_shippingproduct>
+                    <file>plugincompany_shippingproduct.xml</file>
+                </plugincompany_shippingproduct>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <carriers>
+            <shippingcountry>
+                <active>1</active>
+                <model>plugincompany_shippingproduct/carrier_shippingcountry</model>
+                <name>Product / Country Specific</name>
+                <title>Shipping Rate</title>
+                <sort_order>0</sort_order>
+                <mb_standard_rate>0</mb_standard_rate>
+                <type>I</type>
+                <handling_type>F</handling_type>
+                <mb_standard_per_item>1</mb_standard_per_item>
+                <mb_standard_override>1</mb_standard_override>
+                <mb_configurable_calculation>1</mb_configurable_calculation>
+            </shippingcountry>
+        </carriers>
+    </default>
+    <admin>
+        <routers>
+            <adminhtml>
+				<args>
+					<modules>
+						<adminhtml before="Mage_Adminhtml">Plugincompany_Shippingproduct_Adminhtml</adminhtml>
+					</modules>
+				</args>
+			</adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout>
+    <pcshippingjs>
+        <reference name="head">
+            <action method="addJs">
+                <name>plugincompany/jquerynoconflict.js</name>
+            </action>
+            <action method="addJs">
+                <name>plugincompany/shippingcountry.js</name>
+            </action>
+        </reference>
+    </pcshippingjs>
+    <adminhtml_catalog_product_action_attribute_edit>
+        <update handle="pcshippingjs" />
+    </adminhtml_catalog_product_action_attribute_edit>
+    <adminhtml_pcshippingpreset_index_edit>
+        <update handle="pcshippingjs"/>
+        <reference name="head">
+            <action method="addJs">
+                <name>lib/flex.js</name>
+            </action>
+        </reference>
+    </adminhtml_pcshippingpreset_index_edit>
+</layout>

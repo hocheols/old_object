@@ -1,0 +1,275 @@
+<?xml version="1.0" ?>
+<config>
+    <tabs>
+        <modulebazaar module="smscountry" translate="label">
+            <label>Modulebazaar</label>
+            <sort_order>100</sort_order>
+        </modulebazaar>
+    </tabs>
+    <sections>
+        <smscountry_section module="smscountry" translate="label">
+            <label>SMS Country</label>
+            <sort_order>11</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>modulebazaar</tab>
+            <groups>
+                <license>
+                    <label>License</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <buttons translate="label comment">
+                                <frontend_type>button</frontend_type>
+                                <frontend_model>smscountry/license</frontend_model>
+                                <sort_order>1</sort_order>
+                                <show_in_default>1</show_in_default>
+                        </buttons>
+                    </fields>
+                </license>
+                <general_settings translate="label">
+                    <label>General Settings</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This extension works only if customer is from India.</comment>
+                        </enabled>
+                    </fields>
+                </general_settings>
+                <gateway_configuration translate="label">
+                    <label>SMSCountry Gateway Configuration</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <gateway_url translate="label tooltip comment">
+                            <label>Gateway URL</label>
+                            <comment>SMS Gateway URL</comment>
+                            <tooltip>Give SMS Gateway URL in this field</tooltip>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                        </gateway_url>
+                        <username translate="label tooltip comment">
+                            <label>Username</label>
+                            <comment>SMS Gateway Username</comment>
+                            <tooltip>Give SMS Gateway Username in this field</tooltip>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                        </username>
+                        <password translate="label tooltip comment">
+                            <label>Password</label>
+                            <comment>SMS Gateway Password</comment>
+                            <tooltip>Give SMS Gateway Password in this field</tooltip>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>password</frontend_type>
+                            <validate>required-entry</validate>
+                        </password>
+                        <senderid translate="label tooltip comment">
+                            <label>Sender ID</label>
+                            <comment>Sender ID</comment>
+                            <tooltip>Give SMS Gateway sender ID in this field</tooltip>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                        </senderid>
+                    </fields>
+                </gateway_configuration>
+                <template_configuration translate="label">
+                    <label>Message Template Configuration</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <allow_gsm_characters translate="label">
+                            <label>Allow Extended GSM Characters</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allow_gsm_characters>
+                        <chars_per_message translate="label">
+                            <label>Number of Characters per message</label>
+                            <comment>Max number of characters per message</comment>
+                            <tooltip>Number of Characters per message</tooltip>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                        </chars_per_message>
+                        <limit_sms_message translate="label">
+                            <label>Limit to (X) SMS per message</label>
+                            <comment>Max number of joined SMS per message</comment>
+                            <tooltip>Limit to (X) SMS per message is the maximum number of joined or concatenated SMS per message.</tooltip>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                        </limit_sms_message>
+                    </fields>
+                </template_configuration>
+                <message_log translate="label">
+                    <label>Message Log</label>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <send_log_enabled translate="label">
+                            <label>Log all messages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </send_log_enabled>
+                        <unsend_log_enabled translate="label">
+                            <label>Log all unsend messages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </unsend_log_enabled>
+                    </fields>
+                </message_log>
+                <configure_messages translate="label">
+                    <label>Configure Messages</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <order_enabled translate="label">
+                            <label>When order is placed</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_enabled>
+                        <order_message translate="label">
+                            <label>Place order message</label>
+                            <comment>Available variable: {{order_number}}</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>textarea</frontend_type>
+                        </order_message>
+                        <shipment_enabled translate="label">
+                            <label>When shipment is placed</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shipment_enabled>
+                        <shipment_message translate="label">
+                            <label>Place shipment message</label>
+                            <comment>Available variable: {{order_number}}</comment>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>textarea</frontend_type>
+                        </shipment_message>
+                        <invoice_enabled translate="label">
+                            <label>When invoice is placed</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_enabled>
+                        <invoice_message translate="label">
+                            <label>Place invoice message</label>
+                            <comment>Available variable: {{order_number}}</comment>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>textarea</frontend_type>
+                        </invoice_message>
+                        <canceled_enabled translate="label">
+                            <label>When order is canceled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </canceled_enabled>
+                        <canceled_message translate="label">
+                            <label>Canceled order message</label>
+                            <comment>Available variable: {{order_number}}</comment>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>textarea</frontend_type>
+                        </canceled_message>
+                        <rewards_enabled translate="label">
+                            <label>When customer gets reward points</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>85</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rewards_enabled>
+                        <rewards_message translate="label">
+                            <label>Rewards points message (Supports only with Modulebazaar Rewards Extension)</label>
+                            <comment>Available variable: {{firstname}}, {{lastname}}, {{points-earned}}, {{points-earned-for}}</comment>
+                            <sort_order>86</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_type>textarea</frontend_type>
+                        </rewards_message>
+                    </fields>
+                </configure_messages>
+            </groups>
+        </smscountry_section>
+    </sections>
+</config>

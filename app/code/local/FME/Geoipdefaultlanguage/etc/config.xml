@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @category   FME
+* @package    FME_Geoipdefaultlanguage
+* @author     support@fmeextensions.com
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+    <modules>
+        <FME_Geoipdefaultlanguage>
+            <version>1.3.0</version>
+        </FME_Geoipdefaultlanguage>
+    </modules>
+    <frontend>
+        <routers>
+            <geoipdefaultlanguage>
+                <use>standard</use>
+                <args>
+                    <module>FME_Geoipdefaultlanguage</module>
+                    <frontName>geoipdefaultlanguage</frontName>
+                </args>
+            </geoipdefaultlanguage>
+        </routers>
+        <layout>
+            <updates>
+                <geoipdefaultlanguage>
+                    <file>geoipdefaultlanguage.xml</file>
+                </geoipdefaultlanguage>
+            </updates>
+        </layout>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <fme_geo_lang>
+                        <type>singleton</type>
+                        <class>FME_Geoipdefaultlanguage_Model_Observer</class>
+                        <method>setDefaultLang</method>
+                    </fme_geo_lang>
+                </observers>
+            </controller_action_predispatch>
+            <controller_action_layout_generate_blocks_before>
+                <observers>
+                    <fme_geo_footer>
+                        <type>singleton</type>
+                        <class>FME_Geoipdefaultlanguage_Model_Observer</class>
+                        <method>showFooter</method>
+                    </fme_geo_footer>
+                </observers>
+            </controller_action_layout_generate_blocks_before>
+        </events>
+        <translate>
+            <modules>
+                <FME_Geoipdefaultlanguage>
+                    <files>
+                        <default>FME_Geoipdefaultlanguage.csv</default>
+                    </files>
+                </FME_Geoipdefaultlanguage>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+<!--        <routers>
+            <geoipdefaultlanguage>
+                <use>admin</use>
+                <args>
+                    <module>FME_Geoipdefaultlanguage</module>
+                    <frontName>geoipdefaultlanguage</frontName>
+                </args>
+            </geoipdefaultlanguage>
+        </routers>-->
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <geoipdefaultlanguage after="Mage_Adminhtml">FME_Geoipdefaultlanguage_Adminhtml</geoipdefaultlanguage>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <FME_Geoipdefaultlanguage>
+                    <files>
+                        <default>FME_Geoipdefaultlanguage.csv</default>
+                    </files>
+                </FME_Geoipdefaultlanguage>
+            </modules>
+        </translate>
+        <menu>
+            <fme module="geoipdefaultlanguage">
+                <title>FME Extensions</title>
+                <sort_order>71</sort_order>  
+                <children>
+                    <basesec translate="title">
+                        <title>Extensions and Support</title>
+                        <sort_order>0</sort_order>
+                        <action>adminhtml/system_config/edit/section/basesec</action>
+                    </basesec>
+                    <geoipdefaultlanguage module="geoipdefaultlanguage">
+                        <title>Geo-IP Default Language</title>
+                        <sort_order>71</sort_order>               
+                        <children>
+                            <items module="geoipdefaultlanguage">
+                                <title>Manage Groups</title>
+                                <sort_order>0</sort_order>
+                                <action>adminhtml/geoipdefaultlanguage</action>
+                            </items>
+                            <items_import module="geoipdefaultlanguage">
+                                <title>Import</title>
+                                <sort_order>1</sort_order>
+                                <action>adminhtml/importgeotables</action>
+                            </items_import>
+                            <items_config module="geoipdefaultlanguage">
+                                <title>Configurations</title>
+                                <sort_order>4</sort_order>
+                                <action>adminhtml/system_config/edit/section/geoipdefaultlanguage/</action>
+                            </items_config>
+                        </children>
+                    </geoipdefaultlanguage>
+                </children>
+            </fme>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <basesec translate="title">
+                                            <title>Extensions and Support</title>
+                                            <sort_order>100</sort_order>
+                                        </basesec>  
+                                        <geoipdefaultlanguage module="geoipdefaultlanguage">
+                                            <title>Geo-IP Default Language</title>
+                                        </geoipdefaultlanguage>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                        <fme module="geoipdefaultlanguage">
+                            <title>FME Extensions</title>
+                            <sort_order>71</sort_order>  
+                            <children>
+                                <basesec translate="title">
+                                    <title>Extensions and Support</title>
+                                    <sort_order>0</sort_order>
+                                    <action>adminhtml/system_config/edit/section/basesec</action>
+                                </basesec>
+                                <geoipdefaultlanguage module="geoipdefaultlanguage">
+                                    <title>Geo-IP Default Language</title>
+                                    <sort_order>71</sort_order>               
+                                    <children>
+                                        <items module="geoipdefaultlanguage">
+                                            <title>Manage Groups</title>
+                                            <sort_order>0</sort_order>
+                        
+                                        </items>
+                                        <items_import module="geoipdefaultlanguage">
+                                            <title>Import</title>
+                                            <sort_order>1</sort_order>
+                        
+                                        </items_import>
+                                        <items_config module="geoipdefaultlanguage">
+                                            <title>Configurations</title>
+                                            <sort_order>4</sort_order>
+                        
+                                        </items_config>
+                                    </children>
+                                </geoipdefaultlanguage>
+                            </children>
+                        </fme>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <geoipdefaultlanguage>
+                    <file>geoipdefaultlanguage.xml</file>
+                </geoipdefaultlanguage>
+            </updates>
+        </layout>
+    </adminhtml>   
+    <global>
+        <!--
+        <models>
+            <core>
+                <rewrite>
+                    <store>FME_Geoipdefaultlanguage_Model_Store</store>
+                </rewrite>
+            </core>
+        </models>
+        -->
+        <models>
+            <geoipdefaultlanguage>
+                <class>FME_Geoipdefaultlanguage_Model</class>
+                <resourceModel>geoipdefaultlanguage_mysql4</resourceModel>
+            </geoipdefaultlanguage>
+            <geoipdefaultlanguage_mysql4>
+                <class>FME_Geoipdefaultlanguage_Model_Mysql4</class>
+                <entities>
+                    <geoipdefaultlanguage>
+                        <table>geoipdefaultlanguage</table>
+                    </geoipdefaultlanguage>
+                </entities>
+            </geoipdefaultlanguage_mysql4>
+        </models>
+        <resources>
+            <geoipdefaultlanguage_setup>
+                <setup>
+                    <module>FME_Geoipdefaultlanguage</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </geoipdefaultlanguage_setup>
+            <geoipdefaultlanguage_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </geoipdefaultlanguage_write>
+            <geoipdefaultlanguage_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </geoipdefaultlanguage_read>
+        </resources>
+        <blocks>
+            <geoipdefaultlanguage>
+                <class>FME_Geoipdefaultlanguage_Block</class>
+            </geoipdefaultlanguage>
+            <fmebase>
+                <class>FME_Geoipdefaultlanguage_Block</class>
+            </fmebase>
+        </blocks>
+        <helpers>
+            <geoipdefaultlanguage>
+                <class>FME_Geoipdefaultlanguage_Helper</class>
+            </geoipdefaultlanguage>
+        </helpers>
+        <template>
+            <email>
+                <fme_Support_email module="geoipdefaultlanguage">
+                    <label>FME Support Email</label>
+                    <file>geoipdefaultlanguage_Support_email.html</file>
+                    <type>html</type>
+                </fme_Support_email>
+            </email>
+        </template>
+    </global>
+</config>

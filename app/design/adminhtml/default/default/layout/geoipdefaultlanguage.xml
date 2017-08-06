@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>geoipdefaultlanguage/geoipdefaultlanguage.css</stylesheet>
+            </action>
+            <!--<action method="removeItem"><type>js</type><name>prototype/prototype.js</name></action>-->
+            <action method="addItem"><type>js</type><name>geoipdefaultlanguage/jquery-1.6.1.min.js</name></action>
+            <action method="addItem"><type>js</type><name>geoipdefaultlanguage/jquery.accordion.source.js</name></action>
+        </reference>
+    </default>
+    
+    <adminhtml_geoipdefaultlanguage_index>
+        <reference name="content">
+            <block type="geoipdefaultlanguage/adminhtml_geoipdefaultlanguage" name="geoipdefaultlanguage" />
+        </reference>
+    </adminhtml_geoipdefaultlanguage_index>
+    
+    <adminhtml_importgeotables_index>
+        <reference name="content">
+            <block type="geoipdefaultlanguage/adminhtml_importtables" name="importtables" />
+        </reference>
+    </adminhtml_importgeotables_index>
+</layout>
